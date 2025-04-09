@@ -53,9 +53,10 @@ const Manager = () => {
 
   const savePassword = async() => {
     if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
-     
+     console.log(form.id)
      //if any such id exists in database ,delete it 
-     await fetch("https://passprotect-mern.onrender.com/", {method:"DELETE", headers:{"Content-Type":"application/json"}, body:JSON.stringify({id: form.id })})
+     if(form.id!=null)
+      await fetch("https://passprotect-mern.onrender.com/", {method:"DELETE", headers:{"Content-Type":"application/json"}, body:JSON.stringify({id: form.id })})
      
      
       setPasswordArray([...passwordArray, { ...form, id: uuidv4() }]);
